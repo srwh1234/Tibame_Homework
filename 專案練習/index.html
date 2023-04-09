@@ -16,29 +16,41 @@
 
 <body>
     <!-- 導覽列 (Navbar) -->
-    <nav class="main-nav navbar navbar-light bg-light p-0">
-        <div class="container">
+    <nav class="main-nav navbar navbar-light bg-light p-0 navbar-expand-lg">
+        <div class="container" id="navbarNavDropdown">
             <a class="navbar-brand" href="#">專題名稱</a>
 
             <ul class="navbar-nav flex-row align-items-center">
                 <li class="nav-item  mx-2">
-                    <a class="nav-link" href="#cart"><i class="bi bi-cart4">購物車</i></a>
+                    <a class="nav-link my-nav-link" href="#cart"><i class="bi bi-cart4">購物車</i></a>
                 </li>
 
-                <!-- 會員登入/會員專區 只會擇一出現 -->
+                <!-- 會員登入/會員功能 只會擇一出現 -->
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="#login"><i class="bi bi-person-circle">會員登入</i></a>
+                    <a class="nav-link my-nav-link" href="#login"><i class="bi bi-person-circle">會員登入</i></a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#member"><i class="bi bi-person-circle">會員專區</i></a>
+
+                <!-- 下拉式選單 -->
+                <li class="nav-item dropdown mx-2">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle">會員功能</i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item my-nav-link" href="#member">會員中心</a></li>
+                        <li><a class="dropdown-item my-nav-link" href="#orders">我的訂單</a></li>
+                        <li><a class="dropdown-item my-nav-link" href="#favorites">我的最愛</a></li>
+                        <li><a class="dropdown-item" href="#">登出帳號</a></li>
+                    </ul>
                 </li>
 
                 <li class="nav-item mx-2">
-                    <button class="btn btn-warning p-1" href="#regist">免費註冊</button>
+                    <button class="btn btn-warning p-1 my-nav-link" href="#regist">免費註冊</button>
                 </li>
             </ul>
         </div>
     </nav>
+
+
     <!-- 
         flex-row: 用於設置元素的 flex-direction 屬性為 row，使其呈水平排列。
         mx-2: 設定元素的水平margin
@@ -50,27 +62,27 @@
     -->
     <nav class="sub-nav navbar p-2 ">
         <div class="container">
-            <ul class="navbar-nav flex-row border-left-primary">
+            <ul class="navbar-nav flex-row">
                 <li class="nav-item  mx-4">
-                    <a class="nav-link" href="#home">首頁</a>
+                    <a class="nav-link my-nav-link" href="#home">首頁</a>
                 </li>
                 <li class="nav-item  mx-4">
-                    <a class="nav-link" href="#ticket">票券</a>
+                    <a class="nav-link my-nav-link" href="#ticket">票券</a>
                 </li>
                 <li class="nav-item  mx-4">
-                    <a class="nav-link" href="#itinerary">行程</a>
+                    <a class="nav-link my-nav-link" href="#itinerary">行程</a>
                 </li>
                 <li class="nav-item  mx-4">
-                    <a class="nav-link" href="#article">文章</a>
+                    <a class="nav-link my-nav-link" href="#article">文章</a>
                 </li>
                 <li class="nav-item  mx-4">
-                    <a class="nav-link" href="#vendor">廠商</a>
+                    <a class="nav-link my-nav-link" href="#vendor">廠商</a>
                 </li>
                 <li class="nav-item  mx-4">
-                    <a class="nav-link" href="#news">最新消息</a>
+                    <a class="nav-link my-nav-link" href="#news">最新消息</a>
                 </li>
                 <li class="nav-item  mx-4">
-                    <a class="nav-link" href="#faq">常見問題</a>
+                    <a class="nav-link my-nav-link" href="#faq">常見問題</a>
                 </li>
             </ul>
         </div>
@@ -91,18 +103,33 @@
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
     <script>
+        // 會員功能-綁定下拉式選單的事件處理
+        function bindDropdownEvents(page) {
+            $("#content").load(page, function () {
+                $('.dropdown-toggle').dropdown();
+                // 預設選單為收合狀態
+                $(".dropdown-menu").collapse('hide');
+            });
+        }
+
         $(document).ready(function () {
             // 在頁面載入時，載入首頁的內容
             $("#content").load("home.html");
+            // 重新初始化 dropdown
+            bindDropdownEvents("home.html");
 
 
             // 點擊導覽列中的連結時，載入相應的頁面內容
-            $("nav a, nav button").click(function () {
+            $(".my-nav-link").click(function () {
                 var page = $(this).attr("href").substring(1) + '.html';
 
                 $("#content").load(page);
-                $("sub-nav a").removeClass("actived");
+                $(".my-nav-link").removeClass("actived");
                 $(this).addClass("actived");
+                // 重新初始化 dropdown
+                bindDropdownEvents(page);
+
+
                 return false;
             });
         });
