@@ -20,8 +20,9 @@
           <div class="d-flex justify-content-center align-items-center">
             <div class="position-relative">
               <img src="https://fakeimg.pl/300x200/200" alt="會員照片" class="rounded-circle" width="150" height="150">
+
               <a href="#" class="position-absolute bottom-0 end-0">
-                <i class="bi bi-pencil-square">照片</i>
+                <i class="bi bi-camera-fill h2"></i>
               </a>
             </div>
           </div>
@@ -39,7 +40,8 @@
       <div class="col-9">
 
         <div class="card">
-          <h3>帳號設定</h3>
+          <div class="h3 m-3">帳號設定</div>
+
           <ul class="nav nav-tabs mt-3">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#member_profile" data-bs-toggle="tab">基本資料</a>
@@ -50,6 +52,8 @@
           </ul>
 
           <div class="tab-content">
+
+            <!-- 基本資料分頁 -->
             <div class="tab-pane fade show active" id="member_profile">
 
               <!-- 第一排 -->
@@ -133,20 +137,49 @@
               </div>
 
             </div>
+
+
+            <!-- 帳號安全分頁 -->
+            <div class="tab-pane fade" id="member_account">
+
+              <!-- 第一排 -->
+              <div class="h3 m-3">修改密碼</div>
+
+              <!-- 第二排 -->
+              <div class="row m-4">
+                <div class="form-group col-4">
+                  <label class="form-label">舊的密碼</label>
+                  <input type="password" class="form-control" placeholder="輸入舊密碼" id="currentPassword">
+                </div>
+                <div class="form-group col-4">
+                  <label class="form-label">新的密碼</label>
+                  <input type="password" class="form-control" placeholder="輸入新密碼" id="editPassword">
+                  <input type="password" class="form-control my-3" placeholder="確認新密碼" id="confirmPassword">
+                </div>
+              </div>
+
+              <!-- 第三排 -->
+              <div class="h3 m-3">修改信箱</div>
+
+              <!-- 第四排 -->
+              <div class="row m-4">
+                <div class="form-group col-8">
+                  <input type="password" class="form-control" id="editEmail">
+                </div>
+                <!-- 第五排 -->
+                <div class="d-flex align-items-center col-8 my-4">
+                  <button class="btn btn-secondary ms-auto">儲存</button>
+                </div>
+              </div>
+
+            </div>
           </div>
-          <div class="tab-pane fade" id="member_account">
-            <h1>帳號安全</h1>
-            <p>這裡是您的帳號安全設定。</p>
-          </div>
+
         </div>
-
-
-
       </div>
     </div>
   </div>
 
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
