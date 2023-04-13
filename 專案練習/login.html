@@ -13,20 +13,18 @@
     <div class="container">
         <div class="row">
             <div class="col-4 offset-4 mt-5">
-                <div class="login-form">
-                    <div class="mb-3">
-                        <label for="inputAccount" class="form-label">使用者帳戶</label>
-                        <input type="text" class="form-control" id="inputAccount">
-                    </div>
-                    <div class="mb-1">
-                        <label for="inputPassword" class="form-label">密碼</label>
-                        <input type="password" class="form-control" id="inputPassword">
-                    </div>
-                    <div class="mb-1 d-flex">
-                        <a class="nav-link my-nav-link ms-auto text-primary" href="#forget">忘記密碼</a>
-                    </div>
-                    <button class="btn btn-secondary">登入</button>
+                <div class="mb-3">
+                    <label for="inputAccount" class="form-label">使用者帳戶</label>
+                    <input type="text" class="form-control" id="inputAccount">
                 </div>
+                <div class="mb-1">
+                    <label for="inputPassword" class="form-label">密碼</label>
+                    <input type="password" class="form-control" id="inputPassword">
+                </div>
+                <div class="mb-1 d-flex">
+                    <a class="nav-link my-nav-link ms-auto text-primary" href="#forget">忘記密碼</a>
+                </div>
+                <button class="btn btn-secondary">登入</button>
             </div>
         </div>
     </div>
@@ -48,7 +46,7 @@
 
         // 點擊導覽列中的連結時，載入相應的頁面內容
         $(".my-nav-link").click(function () {
-            var page = $(this).attr("href").substring(1) + '.html';           
+            var page = $(this).attr("href").substring(1) + '.html';
 
             $("#content").load(page);
             // 重新初始化 dropdown
