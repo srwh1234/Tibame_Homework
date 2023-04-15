@@ -32,30 +32,6 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script> -->
-
-    <script>
-
-        // 會員功能-綁定下拉式選單的事件處理
-        function bindDropdownEvents(page) {
-            $("#content").load(page, function () {
-                $('.dropdown-toggle').dropdown();
-                // 預設選單為收合狀態
-                $(".dropdown-menu").collapse('hide');
-            });
-        }
-
-        // 點擊導覽列中的連結時，載入相應的頁面內容
-        $(".my-nav-link").click(function () {
-            var page = $(this).attr("href").substring(1) + '.html';
-
-            $("#content").load(page);
-            // 重新初始化 dropdown
-            bindDropdownEvents(page);
-            return false;
-        });
-
-
-    </script>
 </body>
 
 </html>

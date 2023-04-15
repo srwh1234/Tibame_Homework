@@ -15,6 +15,8 @@
 
     <!-- 使用Summernote -->
     <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.css" rel="stylesheet">
+
+
     <style>
         body {
             position: relative;
@@ -132,33 +134,45 @@
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <!-- 使用Summernote -->
     <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote/dist/lang/summernote-zh-TW.min.js"></script>
+
+
 
     <script>
-        // 會員功能-綁定下拉式選單的事件處理
-        function bindDropdownEvents(page) {
-            $("#content").load(page, function () {
-                $('.dropdown-toggle').dropdown();
-                // 預設選單為收合狀態
-                $(".dropdown-menu").collapse('hide');
-            });
-        }
+        $(document).ready(() => {
 
-        $(document).ready(function () {
-            // 在頁面載入時，載入首頁的內容
+            // 載入首頁的內容
             $("#content").load("home.html");
-            // 重新初始化 dropdown
-            bindDropdownEvents("home.html");         
 
-
-            // 點擊導覽列中的連結時，載入相應的頁面內容
-            $(".my-nav-link").click(function () {
+            // 設定 只要是.my-nav-link的點擊事件委派
+            $(document).on("click", ".my-nav-link", function () {                
+                //這裡不能用箭頭函式 因為要用this表示發生點擊事件的元素
                 var page = $(this).attr("href").substring(1) + '.html';
 
-                $("#content").load(page);
-                $(".my-nav-link").removeClass("actived");
-                $(this).addClass("actived");
-                // 重新初始化 dropdown
-                bindDropdownEvents(page);              
+                // 讀取.my-nav-link的指定頁面
+                $("#content").load(page, () => {
+
+                    // 讀取指定頁面後 初始化Summernote編輯器
+                    $('#editor').summernote({
+                        height: 300, // 設定編輯器高度
+                        placeholder: '請輸入內容', // 設定編輯器預設文字
+                        toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['strikethrough', 'superscript', 'subscript']],
+                            // ['color', ['color']],
+                            ['para', ['ul', 'ol']],
+                            // ['height', ['height']]
+                        ], // 設定編輯器工具列
+                        lang: 'zh-TW',
+                    });
+                });
+
+                //導覽列指定當下的選單
+                $(".my-nav-link").removeClass("active");
+                $(this).addClass("active");
+
+                // 摺疊選單為收合狀態
+                $(".dropdown-menu").collapse('hide');
                 return false;
             });
         });
