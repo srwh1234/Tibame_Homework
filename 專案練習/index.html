@@ -13,6 +13,8 @@
     <!-- 使用BootStrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
+    <!-- 使用Summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.css" rel="stylesheet">
     <style>
         body {
             position: relative;
@@ -26,10 +28,10 @@
             width: 100%;
         }        */
     </style>
-
 </head>
 
 <!-- 使用 Flexbox 將 footer 定位在最下方  主體使用flex-grow-1-->
+
 <body class="d-flex flex-column min-vh-100">
 
     <!-- 導覽列 (Navbar) -->
@@ -111,8 +113,10 @@
             <h5>Footer Title</h5>
             <p>Some text here to represent the footer.</p>
             <ul class="list-inline">
-                <li class="list-inline-item"><a class="nav-link my-nav-link text-danger" href="#vendor_login">合作夥伴登入</a></li>
-                <li class="list-inline-item"><a class="nav-link my-nav-link text-danger" href="#vendor_regist">成為合作夥伴</a></li>
+                <li class="list-inline-item"><a class="nav-link my-nav-link text-danger" href="#vendor_login">合作夥伴登入</a>
+                </li>
+                <li class="list-inline-item"><a class="nav-link my-nav-link text-danger"
+                        href="#vendor_regist">成為合作夥伴</a></li>
                 <li class="list-inline-item"><a href="#">Link 3</a></li>
             </ul>
         </div>
@@ -126,6 +130,8 @@
     <!-- 使用JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <!-- 使用Summernote -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.js"></script>
 
     <script>
         // 會員功能-綁定下拉式選單的事件處理
@@ -137,13 +143,11 @@
             });
         }
 
-
         $(document).ready(function () {
             // 在頁面載入時，載入首頁的內容
             $("#content").load("home.html");
             // 重新初始化 dropdown
-            bindDropdownEvents("home.html");
-
+            bindDropdownEvents("home.html");         
 
 
             // 點擊導覽列中的連結時，載入相應的頁面內容
@@ -154,13 +158,10 @@
                 $(".my-nav-link").removeClass("actived");
                 $(this).addClass("actived");
                 // 重新初始化 dropdown
-                bindDropdownEvents(page);
-
+                bindDropdownEvents(page);              
                 return false;
             });
         });
-
-
     </script>
 </body>
 
