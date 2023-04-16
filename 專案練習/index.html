@@ -13,8 +13,18 @@
     <!-- 使用BootStrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
+    <!-- 使用Bootstrap-table -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
+
     <!-- 使用Summernote -->
     <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.css" rel="stylesheet">
+
+    <!-- 使用Bootstrap-icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+
+    <!-- 使用gijgo -->
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />   
 
 
     <style>
@@ -119,7 +129,8 @@
                 </li>
                 <li class="list-inline-item"><a class="nav-link my-nav-link text-danger"
                         href="#vendor_regist">成為合作夥伴</a></li>
-                <li class="list-inline-item"><a href="#">Link 3</a></li>
+                <li class="list-inline-item"><a class="nav-link my-nav-link text-danger"
+                        href="#vendor_itinerary">行程刊登</a></li>
             </ul>
         </div>
     </footer>
@@ -132,11 +143,17 @@
     <!-- 使用JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
     <!-- 使用Summernote -->
     <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote/dist/lang/summernote-zh-TW.min.js"></script>
 
+    <!-- 使用Bootstrap-table -->
+    <script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
 
+    <!-- 使用gijgo -->
+    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/gijgo@1.9.14/js/messages/messages.zh-tw.js" type="text/javascript"></script>
 
     <script>
         $(document).ready(() => {
@@ -145,7 +162,7 @@
             $("#content").load("home.html");
 
             // 設定 只要是.my-nav-link的點擊事件委派
-            $(document).on("click", ".my-nav-link", function () {                
+            $(document).on("click", ".my-nav-link", function () {
                 //這裡不能用箭頭函式 因為要用this表示發生點擊事件的元素
                 var page = $(this).attr("href").substring(1) + '.html';
 
@@ -153,18 +170,20 @@
                 $("#content").load(page, () => {
 
                     // 讀取指定頁面後 初始化Summernote編輯器
-                    $('#editor').summernote({
-                        height: 300, // 設定編輯器高度
-                        placeholder: '請輸入內容', // 設定編輯器預設文字
-                        toolbar: [
-                            ['style', ['bold', 'italic', 'underline', 'clear']],
-                            ['font', ['strikethrough', 'superscript', 'subscript']],
-                            // ['color', ['color']],
-                            ['para', ['ul', 'ol']],
-                            // ['height', ['height']]
-                        ], // 設定編輯器工具列
-                        lang: 'zh-TW',
-                    });
+                    $('#editor').summernote(
+                        {
+                            height: 300, // 設定編輯器高度
+                            placeholder: '請輸入內容', // 設定編輯器預設文字
+                            toolbar: [
+                                ['style', ['bold', 'italic', 'underline', 'clear']],
+                                ['font', ['strikethrough', 'superscript', 'subscript']],
+                                // ['color', ['color']],
+                                ['para', ['ul', 'ol']],
+                                // ['height', ['height']]
+                            ], // 設定編輯器工具列
+                            lang: 'zh-TW',
+                        }
+                    );
                 });
 
                 //導覽列指定當下的選單

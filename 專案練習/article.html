@@ -24,7 +24,7 @@
 
 <body>
   <div class="container mt-3">
-    <div class="row">
+    <div class="row"> 
 
       <!-- 第一排 -->
       <div class="d-flex justify-content-between">
@@ -41,8 +41,8 @@
               <li><a class="dropdown-item" href="#">地區四</a></li>
             </ul>
             <input type="text" class="form-control" placeholder="請輸入關鍵字" aria-label="Text input with dropdown button">
-            <button class="btn btn-outline-secondary" type="button">我的文章</button>
-            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal"
+            <button type="button" class="btn btn-outline-secondary my-nav-link" href="#article_mylist">我的文章</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
               data-bs-target="#staticBackdrop">>發表文章</button>
           </div>
         </div>
@@ -190,11 +190,22 @@
             <label class="form-label">照片預覽可以的話做一下吧</label>
             <input type="file" class="form-control" id="inputArtileImg">
           </div>
+
           <!-- 編輯器區域 -->
           <div id="editor">
             <p>請在此輸入內容</p>
           </div>
+
+          <div class="form-group col-2 mt-3">
+            <select class="form-select" id="inputZone">
+              <option selected>請選擇分類</option>
+              <option value="1">分類1</option>
+              <option value="2">分類2</option>
+              <option value="3">分類3</option>
+            </select>
+          </div>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary">送出文章</button>
         </div>
