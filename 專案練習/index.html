@@ -27,6 +27,12 @@
     <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <!-- 使用Sortable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+
+    <!-- 使用daterangepicker 選取日期區間 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <!-- 使用fullcalendar 顯示日曆視圖 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css" />
     <style>
         body {
             position: relative;
@@ -68,7 +74,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item my-nav-link" href="#member">會員中心</a></li>
-                        <li><a class="dropdown-item my-nav-link" href="#orders">我的訂單</a></li>
+                        <li><a class="dropdown-item my-nav-link" href="#ticket_order">我的訂單</a></li>
                         <li><a class="dropdown-item my-nav-link" href="#favorites">我的最愛</a></li>
                         <li><a class="dropdown-item" href="#">登出帳號</a></li>
                     </ul>
@@ -95,7 +101,7 @@
         <div class="container">
             <ul class="navbar-nav flex-row">
                 <li class="nav-item  mx-4">
-                    <a class="nav-link my-nav-link" href="#home">首頁</a>
+                    <a class="nav-link my-nav-link" href="#home">最新消息</a>
                 </li>
                 <li class="nav-item  mx-4">
                     <a class="nav-link my-nav-link" href="#ticket">票券</a>
@@ -106,9 +112,7 @@
                 <li class="nav-item  mx-4">
                     <a class="nav-link my-nav-link" href="#article">文章</a>
                 </li>
-                <li class="nav-item  mx-4">
-                    <a class="nav-link my-nav-link" href="#news">最新消息</a>
-                </li>
+
                 <li class="nav-item  mx-4">
                     <a class="nav-link my-nav-link" href="#faq">常見問題</a>
                 </li>
@@ -157,7 +161,17 @@
 
     <!-- 引入SortableJS的JS文件 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
-    
+
+    <!-- 使用daterangepicker 選取日期區間 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <!-- 使用fullcalendar 顯示日曆視圖 -->   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/zh-tw.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
     <script>
         $(document).ready(() => {
 
