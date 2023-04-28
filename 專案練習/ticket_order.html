@@ -51,8 +51,8 @@
             <td class="pay_date">2023-03-06 09:00</td>
             <td class="actual_price">$15566</td>
             <td>
-              <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal"
-                data-bs-target="#detail_modal">查看詳情</button>
+              <button class="btn btn-sm btn-outline-secondary open-modal" type="button" data-bs-toggle="modal"
+                data-bs-target="#detail_modal" data-url="ticket_order_detail.html">查看詳情</button>
             </td>
           </tr>
 
@@ -62,8 +62,8 @@
             <td class="pay_date">2023-03-06 09:00</td>
             <td class="actual_price">$35566</td>
             <td>
-              <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal"
-                data-bs-target="#detail_modal">查看詳情
+              <button class="btn btn-sm btn-outline-secondary open-modal" type="button" data-bs-toggle="modal"
+                data-bs-target="#detail_modal" data-url="ticket_order_detail.html">查看詳情
               </button>
             </td>
           </tr>
@@ -98,11 +98,10 @@
     </div>
   </div>
 
-  <!-- 編輯文章按鈕按下去的Modal畫面 -->
-  <div class="modal fade" id="detail_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="detail_label" aria-hidden="true">
+  <!-- 訂單明細按鈕按下去的Modal畫面 -->
+  <div class="modal fade" id="detail_modal" tabindex="-1" aria-labelledby="detail_label" aria-hidden="true">
 
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="detail_label">訂單明細</h1>
@@ -112,6 +111,25 @@
         <div class="modal-body">
           <!-- 這裡是要動態載入的內容 -->
 
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 退貨按鈕按下去的Modal畫面 -->
+  <div class="modal fade" id="refund_modal" tabindex="-1" aria-labelledby="refund_label" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="refund_label">退貨</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <textarea class="form-control mt-2" id="inputComment" rows="5"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary">送出申請</button>
         </div>
       </div>
     </div>
@@ -131,7 +149,14 @@
         $("#detail_modal").modal("show"); // 顯示Modal
       });
     });
-    
+
+    //我要退貨的參數傳遞
+    $('#refund_modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var recipient = button.data('bs-whatever');
+      $(".modal-title").text(recipient);
+    });
+
 
   </script>
 </body>
