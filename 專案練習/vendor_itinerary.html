@@ -78,8 +78,8 @@
  
   <script>
     /*以下是GoogleMap*/
-    var map2;
-    var service2;
+    var map;
+    var service;
     var resultAry = [];
 
      // 檢查是否已載入 Google Maps JavaScript API
@@ -99,12 +99,12 @@
       var taiwan = { lat: 23.6978, lng: 120.9605 };
 
       //這個必須要 如果不想顯示 則需要把div隱藏起來
-      map2 = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map'), {
         center: taiwan,
         zoom: 8
       });
 
-      service2 = new google.maps.places.PlacesService(map2);
+      service = new google.maps.places.PlacesService(map);
     }
 
 
